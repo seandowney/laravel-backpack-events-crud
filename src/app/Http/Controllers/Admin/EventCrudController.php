@@ -70,7 +70,7 @@ class EventCrudController extends CrudController {
             'type' => 'select_from_array',
             'name' => 'ticket_vendor',
             'allows_null' => true,
-            'options' => config('events.ticket_vendors'),
+            'options' => config('seandowney.eventscrud.ticket_vendors'),
             'value' => null,
         ]);
         $this->crud->addField([    // TEXT
@@ -91,7 +91,7 @@ class EventCrudController extends CrudController {
             'type' => 'select_from_array',
             'name' => 'venue_id',
             'allows_null' => true,
-            'options' => array_pluck(config('events.venues'), 'title', 'id'),
+            'options' => array_pluck(config('seandowney.eventscrud.venues'), 'title', 'id'),
             'value' => null,
         ]);
         $this->crud->addField([    // SELECT
