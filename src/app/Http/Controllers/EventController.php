@@ -1,8 +1,8 @@
 <?php
 
-namespace Dowser\BackpackEventsCrud\app\Http\Controllers;
+namespace SeanDowney\BackpackEventsCrud\app\Http\Controllers;
 
-use Dowser\BackpackEventsCrud\app\Models\Event;
+use SeanDowney\BackpackEventsCrud\app\Models\Event;
 
 class EventController extends Controller
 {

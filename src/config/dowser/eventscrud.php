@@ -3,7 +3,7 @@
 return [
 
     /*
-    | Dowser/EventsCrud configs.
+    | SeanDowney/EventsCrud configs.
     */
 
     /**

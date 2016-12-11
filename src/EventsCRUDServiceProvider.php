@@ -1,6 +1,6 @@
 <?php
 
-namespace Dowser\BackpackEventsCrud;
+namespace SeanDowney\BackpackEventsCrud;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Routing\Router;
@@ -23,16 +23,16 @@ class EventsCRUDServiceProvider extends ServiceProvider
     {
         // LOAD THE VIEWS
         // - first the published views (in case they have any changes)
-        $this->loadViewsFrom(resource_path('views/vendor/dowser/eventscrud'), 'dowser');
+        $this->loadViewsFrom(resource_path('views/vendor/seandowney/eventscrud'), 'seandowney');
         // - then the stock views that come with the package, in case a published view might be missing
-        $this->loadViewsFrom(realpath(__DIR__.'/resources/views'), 'dowser');
+        $this->loadViewsFrom(realpath(__DIR__.'/resources/views'), 'seandowney');
 
         $this->mergeConfigFrom(
-            __DIR__.'/config/dowser/eventscrud.php', 'dowser.eventscrud'
+            __DIR__.'/config/seandowney/eventscrud.php', 'seandowney.eventscrud'
         );
 
         // publish views
-        $this->publishes([__DIR__.'/resources/views' => resource_path('views/vendor/dowser/eventscrud')], 'views');
+        $this->publishes([__DIR__.'/resources/views' => resource_path('views/vendor/seandowney/eventscrud')], 'views');
 
         // publish config file
         $this->publishes([__DIR__.'/config' => config_path()], 'config');
@@ -49,7 +49,7 @@ class EventsCRUDServiceProvider extends ServiceProvider
      */
     public function setupRoutes(Router $router)
     {
-        $router->group(['namespace' => 'Dowser\BackpackEventsCrud\app\Http\Controllers'], function ($router) {
+        $router->group(['namespace' => 'SeanDowney\BackpackEventsCrud\app\Http\Controllers'], function ($router) {
             \Route::group(['prefix' => config('backpack.base.route_prefix', 'admin'), 'middleware' => ['web', 'admin'], 'namespace' => 'Admin'], function () {
                 \CRUD::resource('event', 'EventCrudController');
             });

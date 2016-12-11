@@ -1,6 +1,6 @@
 <?php
 
-namespace Dowser\BackpackEventsCrud\app\Models;
+namespace SeanDowney\BackpackEventsCrud\app\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Backpack\CRUD\CrudTrait;

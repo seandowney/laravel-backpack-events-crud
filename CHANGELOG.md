@@ -1,6 +1,6 @@
 # Changelog
 
-All Notable changes to `Dowser Laravel Backpack EventsCrud` will be documented in this file
+All Notable changes to `SeanDowney Laravel Backpack EventsCrud` will be documented in this file
 
 ## NEXT - YYYY-MM-DD
 

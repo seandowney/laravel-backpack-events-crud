@@ -1,5 +1,5 @@
 {
-    "name": "dowser/backpackeventscrud",
+    "name": "seandowney/backpackeventscrud",
     "description": "Events management interface for Laravel 5 using Backpack CRUD.",
     "keywords": [
         "laravel backpack",
@@ -26,12 +26,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Dowser\\BackpackEventsCrud\\": "src"
+            "SeanDowney\\BackpackEventsCrud\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Dowser\\BackpackEventsCrud\\Test\\": "tests"
+            "SeanDowney\\BackpackEventsCrud\\Test\\": "tests"
         }
     },
     "scripts": {

@@ -1,12 +1,12 @@
 <?php
 
-namespace Dowser\BackpackEventsCrud\app\Http\Controllers\Admin;
+namespace SeanDowney\BackpackEventsCrud\app\Http\Controllers\Admin;
 
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 
 // VALIDATION: change the requests to match your own file names if you need form validation
-use Dowser\BackpackEventsCrud\app\Http\Requests\EventRequest as StoreRequest;
-use Dowser\BackpackEventsCrud\app\Http\Requests\EventRequest as UpdateRequest;
+use SeanDowney\BackpackEventsCrud\app\Http\Requests\EventRequest as StoreRequest;
+use SeanDowney\BackpackEventsCrud\app\Http\Requests\EventRequest as UpdateRequest;
 
 class EventCrudController extends CrudController {
 
@@ -17,7 +17,7 @@ class EventCrudController extends CrudController {
 		| BASIC CRUD INFORMATION
 		|--------------------------------------------------------------------------
 		*/
-        $this->crud->setModel("Dowser\BackpackEventsCrud\app\Models\Event");
+        $this->crud->setModel("SeanDowney\BackpackEventsCrud\app\Models\Event");
         $this->crud->setRoute(config('backpack.base.route_prefix').'/event');
         $this->crud->setEntityNameStrings('event', 'events');
 
