@@ -1,0 +1,45 @@
+{
+    "name": "dowser/backpackeventscrud",
+    "description": "Events management interface for Laravel 5 using Backpack CRUD.",
+    "keywords": [
+        "laravel backpack",
+        "events",
+        "manage event",
+    ],
+    "homepage": "https://github.com/seandowney/laravel-backpack-events-crud",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Seán Downey",
+            "email": "sean@considerweb.com",
+            "role": "Lead Developer"
+        }
+    ],
+    "require": {
+        "illuminate/support": "~5.1",
+        "php" : ">=5.3.0",
+        "backpack/crud": "^3.0.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "4.*",
+        "scrutinizer/ocular": "~1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dowser\\BackpackEventsCrud\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Dowser\\BackpackEventsCrud\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
