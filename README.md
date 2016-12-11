@@ -28,7 +28,7 @@ $ php artisan migrate #create the events tabl
 4) [Optional] Add a menu item for it in resources/views/vendor/backpack/base/inc/sidebar.blade.php or menu.blade.php:
 
 ```html
-<li><a href="{{ url(config('backpack.base.route_prefix').'/events') }}"><i class="fa fa-file-o"></i> <span>Events</span></a></li>
+<li><a href="{{ url(config('backpack.base.route_prefix', 'admin').'/event') }}"><i class="fa fa-file-o"></i> <span>Events</span></a></li>
 ```
 
 ## Change log
