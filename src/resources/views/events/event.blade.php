@@ -11,16 +11,16 @@
 {{{ $event->meta_description ? $event->meta_description : ''}}}
 @stop
 
-{{-- Update the Meta Keywords --}}
-@section('meta_keywords')
-{{{ $event->meta_keywords ? $event->meta_keywords : ''}}}
-@stop
-
 {{-- Page content --}}
 @section('content')
 <article class="page" itemscope itemtype="http://schema.org/Event">
 	<h1 itemprop="name">{{ $event->title }} @if(!empty($event->speaker)) <span>by {{ $event->speaker }}</span>@endif</h1>
-	<div class="event-date"><time itemprop="startDate" datetime="{{ $event->start_time->format('c') }}"></time>{{ $event->start_time->format('g:ia D jS F\ Y') }}</div>
+	<div class="event-date">
+        <time itemprop="startDate" datetime="{{ $event->start_time->format('c') }}"></time>
+        <time itemprop="endDate" datetime="{{ $event->end_time->format('c') }}"></time>
+        {{ $event->start_time->format('g:ia D jS F\ Y') }}
+        @if($event->end_time !== null) to {{ $event->end_time->format('g:ia D jS F\ Y') }}@endif
+    </div>
 
 	@if($display_ticket_form)
 	<h2>Book your tickets now</h2>

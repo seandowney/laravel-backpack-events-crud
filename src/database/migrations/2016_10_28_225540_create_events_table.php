@@ -14,17 +14,20 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title')->unique();
-            $table->string('speaker');
-            $table->string('slug');
-            $table->string('ticket_vendor_id');
-            $table->tinyInteger('ticket_vendor');
-            $table->string('venue_id');
+            $table->string('title');
+            $table->string('slug')->unique();
+            $table->string('speaker', 100)->nullable();
             $table->dateTime('start_time');
+            $table->dateTime('end_time')->nullable();
             $table->text('body');
-            $table->text('meta_description');
+            $table->string('ticket_vendor_id')->nullable();
+            $table->tinyInteger('ticket_vendor')->nullable();
+            $table->string('venue_id')->nullable();
+            $table->string('meta_description', 255)->nullable();
             $table->tinyInteger('status');
             $table->timestamps();
+
+            $table->index(['status', 'start_time']);
         });
     }
 

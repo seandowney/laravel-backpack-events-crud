@@ -25,16 +25,17 @@ class EventRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:5|max:255',
-            'slug' => 'unique:events,slug,'.\Request::get('id'),
-            'speaker' => 'min:5|max:255',
-            'start_time' => 'required|date_format:"Y-m-d H:i:s"',
-            'body' => 'required|min:5|max:255',
-            'ticket_vendor' => 'numeric',
+            'title'            => 'required|min:5|max:255',
+            'slug'             => 'unique:events,slug,'.\Request::get('id'),
+            'speaker'          => 'min:5|max:100',
+            'start_time'       => 'required|date_format:"Y-m-d H:i:s"',
+            'end_time'         => 'date_format:"Y-m-d H:i:s"',
+            'body'             => 'required|min:5',
+            'ticket_vendor'    => 'numeric',
             'ticket_vendor_id' => 'numeric',
-            'venue_id' => 'numeric',
-            'meta_description' => 'min:0|max:255',
-            'status' => 'required|in:0,1',
+            'venue_id'         => 'numeric',
+            'meta_description' => 'max:255',
+            'status'           => 'required|in:0,1',
         ];
     }
 

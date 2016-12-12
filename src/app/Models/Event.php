@@ -22,8 +22,11 @@ class Event extends Model
 	protected $table = 'events';
 	protected $primaryKey = 'id';
 	protected $guarded = ['id'];
-	protected $fillable = ['title', 'speaker', 'slug', 'ticket_vendor_id', 'ticket_vendor', 'venue_id', 'start_time', 'body', 'meta_description', 'status'];
-    protected $dates = ['start_time'];
+	protected $fillable = [
+        'title', 'speaker', 'slug', 'start_time', 'end_time', 'body',
+        'ticket_vendor_id', 'ticket_vendor', 'venue_id', 'meta_description', 'status'
+    ];
+    protected $dates = ['start_time', 'end_time'];
 
     /**
      * Return the sluggable configuration array for this model.
@@ -88,6 +91,49 @@ class Event extends Model
 
         return $this->title;
     }
+
+    /**
+	 * Get the Next event
+	 *
+	 * @return Event
+	 */
+	public function next()
+	{
+		return $this->published()
+				->where('start_time', '>', date('Y-m-d H:is:s'))
+				->first();
+
+	}//end next()
+
+
+	/**
+	 * Get the Upcoming events
+	 *
+	 * @return Event
+	 */
+	public function upcoming()
+	{
+		return $this->published()
+				->where('start_time', '>', date('Y-m-d H:is:s'))
+				->limit(5)
+				->get();
+
+	}//end upcoming()
+
+
+	/**
+	 * Get the Last event
+	 *
+	 * @return Event
+	 */
+	public function prev()
+	{
+		return $this->published()
+				->where('start_time', '<', date('Y-m-d H:is:s'))
+				->first();
+
+	}//end prev()
+
 
 	/*
 	|--------------------------------------------------------------------------

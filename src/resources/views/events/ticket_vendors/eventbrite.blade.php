@@ -1,0 +1,1 @@
+<iframe src="https://www.eventbrite.ie/tickets-external?eid={{{ $event->ticket_vendor_id }}}&ref=etckt&v=2" frameborder="0" height="256" width="100%" vspace="0" hspace="0" marginheight="5" marginwidth="5" scrolling="auto" allowtransparency="true"></iframe>

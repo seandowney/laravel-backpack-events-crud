@@ -59,6 +59,16 @@ class EventCrudController extends CrudController {
             ]
         ]);
 
+        $this->crud->addField([    // TEXT
+            'name' => 'end_time',
+            'label' => 'End Time',
+            'type' => 'datetime_picker',
+            'datetime_picker_options' => [
+                'format' => 'DD/MM/YYYY HH:mm',
+                'language' => 'en'
+            ]
+        ]);
+
         $this->crud->addField([    // WYSIWYG
             'name' => 'body',
             'label' => 'Body',
@@ -79,13 +89,6 @@ class EventCrudController extends CrudController {
             'type' => 'text',
             'placeholder' => 'The ID from the ticket vendor',
         ]);
-        $this->crud->addField([    // TEXT
-            'name' => 'meta_description',
-            'label' => 'Meta Description',
-            'type' => 'text',
-            'placeholder' => '',
-        ]);
-
         $this->crud->addField([    // SELECT
             'label' => 'Venue',
             'type' => 'select_from_array',
@@ -94,6 +97,14 @@ class EventCrudController extends CrudController {
             'options' => array_pluck(config('seandowney.eventscrud.venues'), 'title', 'id'),
             'value' => null,
         ]);
+
+        $this->crud->addField([    // TEXT
+            'name' => 'meta_description',
+            'label' => 'Meta Description',
+            'type' => 'text',
+            'placeholder' => '',
+        ]);
+
         $this->crud->addField([    // SELECT
             'label' => 'Status',
             'type' => 'select_from_array',
