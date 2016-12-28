@@ -2,8 +2,8 @@
 
 {{-- Page content --}}
 @section('content')
-@if (isset($events))
 <h1>Events</h1>
+@if(isset($events) && count($events) > 0)
 @foreach ($events as $event)
 <div class="row">
 	<div class="span8">
@@ -21,5 +21,7 @@
 @endforeach
 
 {{ $events->links() }}
+@else
+<p>We don't have any events arranged at the moment.</p>
 @endif
 @stop

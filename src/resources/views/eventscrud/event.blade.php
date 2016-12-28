@@ -2,22 +2,22 @@
 
 {{-- Page title --}}
 @section('title')
-{{{ $event->meta_title ? $event->meta_title : $event->title }}} ::
+{{{ $event->title }}} ::
 @parent
 @stop
 
 {{-- Update the Meta Description --}}
 @section('meta_description')
-{{{ $event->meta_description ? $event->meta_description : ''}}}
+{{{ !is_null($event->meta_description) ? $event->meta_description : ''}}}
 @stop
 
 {{-- Page content --}}
 @section('content')
 <article class="page" itemscope itemtype="http://schema.org/Event">
-	<h1 itemprop="name">{{ $event->title }} @if(!empty($event->speaker)) <span>by {{ $event->speaker }}</span>@endif</h1>
+	<h1 itemprop="name">{{ $event->title }} @if(!is_null($event->speaker)) <span>by {{ $event->speaker }}</span>@endif</h1>
 	<div class="event-date">
         <time itemprop="startDate" datetime="{{ $event->start_time->format('c') }}"></time>
-        <time itemprop="endDate" datetime="{{ $event->end_time->format('c') }}"></time>
+        @if($event->end_time !== null)<time itemprop="endDate" datetime="{{ $event->end_time->format('c') }}"></time>@endif
         {{ $event->start_time->format('g:ia D jS F\ Y') }}
         @if($event->end_time !== null) to {{ $event->end_time->format('g:ia D jS F\ Y') }}@endif
     </div>
@@ -25,7 +25,7 @@
 	@if($display_ticket_form)
 	<h2>Book your tickets now</h2>
 	<div style="width:100%; text-align:left;" >
-		@include('ticket_vendors.'.$ticket_vendors[$event->ticket_vendor], array('event' => $event))
+		@include('seandowney::eventscrud.ticket_vendors.'.$ticket_vendors[$event->ticket_vendor], array('event' => $event))
 	</div>
 	@endif
 
