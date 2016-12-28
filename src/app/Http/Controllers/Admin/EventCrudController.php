@@ -111,7 +111,6 @@ class EventCrudController extends CrudController {
             'name' => 'status',
             'allows_null' => true,
             'options' => [0 => 'Draft', 1 => 'Published'],
-            'value' => 0,
         ]);
 
         // ------ CRUD COLUMNS
