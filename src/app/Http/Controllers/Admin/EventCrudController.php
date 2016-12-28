@@ -126,6 +126,9 @@ class EventCrudController extends CrudController {
             'type' => 'boolean',
             'options' => [0 => 'Draft', 1 => 'Published'],
         ]);
+
+
+        $this->crud->orderBy('start_time', 'desc');
     }
 
 
