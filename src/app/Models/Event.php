@@ -23,7 +23,7 @@ class Event extends Model
 	protected $primaryKey = 'id';
 	protected $guarded = ['id'];
 	protected $fillable = [
-        'title', 'speaker', 'slug', 'start_time', 'end_time', 'body',
+        'title', 'speaker', 'slug', 'start_time', 'end_time', 'body', 'image',
         'ticket_vendor_id', 'ticket_vendor', 'venue_id', 'meta_description', 'status'
     ];
     protected $dates = ['start_time', 'end_time'];

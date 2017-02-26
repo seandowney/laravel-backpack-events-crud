@@ -21,6 +21,11 @@
         {{ $event->start_time->format('g:ia D jS F\ Y') }}
         @if($event->end_time !== null) to {{ $event->end_time->format('g:ia D jS F\ Y') }}@endif
     </div>
+	@if(!empty($event->image))
+	<div class="event-image">
+		<img src="{{ url($event->image) }}" title="{{ $event->title }}" alt="{{ $event->title }}" />
+	</div>
+	@endif
 
 	@if($display_ticket_form)
 	<h2>Book your tickets now</h2>

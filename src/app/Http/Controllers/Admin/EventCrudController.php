@@ -75,6 +75,11 @@ class EventCrudController extends CrudController {
             'type' => 'ckeditor',
             'placeholder' => 'Your textarea text here',
         ]);
+		$this->crud->addField([    // Image
+            'name' => 'image',
+            'label' => 'Image',
+            'type' => 'browse',
+        ]);
         $this->crud->addField([    // SELECT
             'label' => 'Ticket Vendor',
             'type' => 'select_from_array',
@@ -111,6 +116,7 @@ class EventCrudController extends CrudController {
             'name' => 'status',
             'allows_null' => true,
             'options' => [0 => 'Draft', 1 => 'Published'],
+			'value' => 0,
         ]);
 
         // ------ CRUD COLUMNS
