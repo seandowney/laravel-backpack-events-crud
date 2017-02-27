@@ -52,6 +52,7 @@ class EventsCRUDServiceProvider extends ServiceProvider
         $router->group(['namespace' => 'SeanDowney\BackpackEventsCrud\app\Http\Controllers'], function ($router) {
             \Route::group(['prefix' => config('backpack.base.route_prefix', 'admin'), 'middleware' => ['web', 'admin'], 'namespace' => 'Admin'], function () {
                 \CRUD::resource('event', 'EventCrudController');
+                \CRUD::resource('venue', 'VenueCrudController');
             });
         });
     }

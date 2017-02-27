@@ -94,13 +94,14 @@ class EventCrudController extends CrudController {
             'type' => 'text',
             'placeholder' => 'The ID from the ticket vendor',
         ]);
-        $this->crud->addField([    // SELECT
-            'label' => 'Venue',
-            'type' => 'select_from_array',
-            'name' => 'venue_id',
-            'allows_null' => true,
-            'options' => array_pluck(config('seandowney.eventscrud.venues'), 'title', 'id'),
-            'value' => null,
+		$this->crud->addField([    // SELECT
+			'label' => 'Venue',
+			'type' => 'select2',
+			'name' => 'venue_id',
+			'allows_null' => true,
+			'entity' => 'venue',
+			'attribute' => 'title',
+			'model' => "SeanDowney\BackpackEventsCrud\app\Models\Venue",
         ]);
 
         $this->crud->addField([    // TEXT
@@ -116,7 +117,6 @@ class EventCrudController extends CrudController {
             'name' => 'status',
             'allows_null' => true,
             'options' => [0 => 'Draft', 1 => 'Published'],
-			'value' => 0,
         ]);
 
         // ------ CRUD COLUMNS

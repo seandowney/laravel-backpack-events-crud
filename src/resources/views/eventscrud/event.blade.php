@@ -36,26 +36,45 @@
 
 	{!! $event->body !!}
 
-    @if(isset($venue))
+    @if(isset($event->venue))
 	<h2>Venue</h2>
 	<div class="event-venue" itemprop="location" itemscope itemtype="http://schema.org/Place">
-		<strong itemprop="name">{{ $venue['title'] }}</strong>
-		@if(isset($venue['description']))<p>{{ $venue['description'] }}</p>@endif
+		<strong itemprop="name">{{ $event->venue->title }}</strong>
+		@if(isset($event->venue->description)){!! $event->venue->description !!}@endif
 		<address itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-			<span itemprop="streetAddress">{{ $venue['address']['address1'] }}@if(isset($venue['address']['address2'])),<br/>{{ $venue['address']['address2'] }}@endif</span>,<br/>
-			<span itemprop="addressLocality">{{ $venue['address']['town'] }}</span>,<br/>
-			<span itemprop="addressRegion">{{ $venue['address']['county'] }}</span><br/>
+			@if(!empty($event->venue->address1) || !empty($event->venue->address2))
+			<span itemprop="streetAddress">{{ $event->venue->address1 }}@if(!empty($event->venue->address2)),<br/>{{ $event->venue->address2 }}@endif</span>,<br/>
+			@endif
+			@if(isset($event->venue->city))
+			<span itemprop="addressLocality">{{ $event->venue->city }}</span>,<br/>
+			@endif
+			@if(isset($event->venue->state))
+			<span itemprop="addressRegion">{{ $event->venue->state }}</span><br/>
+			@endif
+			@if(isset($event->venue->postcode))
+			<span itemprop="postalCode">{{ $event->venue->postcode }}</span><br/>
+			@endif
+			@if(isset($event->venue->country))
+			<span itemprop="addressCountry">{{ $event->venue->country }}</span><br/>
+			@endif
 		</address>
-		<p>W: <a href="{{ $venue['url'] }}" itemprop="url">{{ $venue['url'] }}</a><br/>
-			T: <span itemprop="telephone">{{ $venue['phone'] }}</span><br/>
+		<p>
+			@if(!empty($event->venue->url))
+			W: <a href="{{ $event->venue->url }}" itemprop="url">{{ $event->venue->url }}</a><br/>
+			@endif
+			@if(!empty($event->venue->phone))
+			T: <span itemprop="telephone">{{ $event->venue->phone }}</span><br/>
+			@endif
+			@if(isset($event->venue->latitude) && isset($event->venue->longitude))
 			<span itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates">
-				C: {{ $venue['coordinates']['lat'] }}, {{ $venue['coordinates']['lon'] }}
-				<meta itemprop="latitude" content="{{ $venue['coordinates']['lat'] }}" />
-				<meta itemprop="longitude" content="{{ $venue['coordinates']['lon'] }}" />
+				C: {{ $event->venue->latitude }}, {{ $event->venue->longitude }}
+				<meta itemprop="latitude" content="{{ $event->venue->latitude }}" />
+				<meta itemprop="longitude" content="{{ $event->venue->longitude }}" />
 			</span>
+			@endif
 		</p>
 		<div class="Flexible-container">
-		{!! $venue['map'] !!}
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2360.7531368800155!2d{{ $event->venue->longitude }}!3d{{ $event->venue->latitude }}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTPCsDQzJzIxLjYiTiA2wrAxOSczMy41Ilc!5e0!3m2!1sen!2sie!4v1488119023181" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 		</div>
 		<style>
 
