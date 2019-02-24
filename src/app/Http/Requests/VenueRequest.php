@@ -29,15 +29,15 @@ class VenueRequest extends \Backpack\CRUD\app\Http\Requests\CrudRequest
             'slug'       => 'unique:venues,slug,'.\Request::get('id'),
 			'descrition' => 'min:5',
             'address1'   => 'min:5|max:100',
-            'address2'   => 'min:5|max:100',
+            'address2'   => 'nullable|min:5|max:100',
             'city'       => 'min:5|max:50',
             'state'      => 'min:5|max:50',
-            'postcode'   => 'min:4|max:10',
+            'postcode'   => 'nullable|min:5|max:10',
             'country'    => 'min:3|max:100',
             'url'        => 'url|max:100',
-            'phone'      => '|max:30',
-            'latitude'   => 'numeric|max:90|min:-90',
-            'longitude'  => 'numeric|max:180|min:-180',
+            'phone'      => 'max:30',
+            'latitude'   => 'nullable|numeric|max:90|min:-90',
+            'longitude'  => 'nullable|numeric|max:180|min:-180',
         ];
     }
 
