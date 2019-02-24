@@ -121,7 +121,7 @@ class Event extends Model
     public function next()
     {
         return $this->published()
-                ->where('start_time', '>', date('Y-m-d H:is:s'))
+                ->where('start_time', '>', date('Y-m-d H:i:s'))
                 ->first();
 
     }//end next()
@@ -135,7 +135,7 @@ class Event extends Model
     public function upcoming()
     {
         return $this->published()
-                ->where('start_time', '>', date('Y-m-d H:is:s'))
+                ->where('start_time', '>', date('Y-m-d H:i:s'))
                 ->limit(5)
                 ->get();
 
@@ -150,7 +150,7 @@ class Event extends Model
     public function prev()
     {
         return $this->published()
-                ->where('start_time', '<', date('Y-m-d H:is:s'))
+                ->where('start_time', '<', date('Y-m-d H:i:s'))
                 ->first();
 
     }//end prev()
